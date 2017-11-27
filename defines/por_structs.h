@@ -27,11 +27,27 @@ struct Entity {
   u32 unknown44;
   u32 x_friction;
   u32 gravity;
-  u8 dummypadding1[0xE2];
+  u8 dummypadding1[0x80];
+  u32 player_state_booleans;
+  u32 player_state_booleans_2;
+  u8 dummypadding4[0x5A];
   u8 subtype;
   u8 byte_5;
   u8 dummypadding2[8];
   u16 var_a;
   u16 var_b;
   u8 dummypadding3[0x20];
+};
+
+struct rect {
+  u16 left;
+  u16 top;
+  u16 right;
+  u16 bottom;
+};
+
+struct hitbox {
+  struct rect box;
+  u32 which_box;
+  u32 type;
 };
