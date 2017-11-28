@@ -22,7 +22,8 @@ void StairsUpdate(struct Entity* self) {
         && controlled_player->x < self->x + 0x8000
         && controlled_player->y < self->y + 0x8000
     ) {
-      // Pressed up while cloes to the stairs.
+      // Pressed up while close to the stairs (within 8px in any direction).
+      // Go to the on stairs state.
       self->state = 1;
       controlled_player->x = self->x;
     }
@@ -53,7 +54,7 @@ void StairsUpdate(struct Entity* self) {
       return;
     }
     
-    // Create an invisible platform under them to simulate the stairs.
+    // Create an invisible platform hitbox under the player to simulate the stairs.
     u32 platform_y = self->y - self->x - controlled_player->x;
     
     SetHitbox(self, controlled_player->x, platform_y, self->z, hitbox);
