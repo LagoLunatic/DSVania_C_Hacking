@@ -55,7 +55,7 @@ void StairsUpdate(struct Entity* self) {
     }
     
     // Create an invisible platform hitbox under the player to simulate the stairs.
-    u32 platform_y = self->y - self->x - controlled_player->x;
+    u32 platform_y = self->y - (self->x - controlled_player->x);
     
     SetHitbox(self, controlled_player->x, platform_y, self->z, hitbox);
     
