@@ -3,6 +3,8 @@
 .erroronwarning on
 
 PROJECT_DIR equ "../../ROMs/DoS_Enemy_Names"
+@Overlay41Start equ 0x02308920
+@FreeSpace equ 0x02308920
 
 .open PROJECT_DIR + "/ftc/overlay9_0", 0219E3E0h
 
@@ -11,10 +13,9 @@ PROJECT_DIR equ "../../ROMs/DoS_Enemy_Names"
 
 .close
 
-.open PROJECT_DIR + "/ftc/overlay9_41", 023E0100h
+.open PROJECT_DIR + "/ftc/overlay9_41", @Overlay41Start
 
-.org 0x023E0100 ; Free space
-@FreeSpace:
+.org @FreeSpace
   push r0 ; Preserve the enemy ID
   bl 0203B308h ; SetEnemyOnTopScreen, this is the line of code we overwrote to jump here.
   pop r0

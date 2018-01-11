@@ -3,10 +3,12 @@
 .erroronwarning on
 
 PROJECT_DIR equ "../../ROMs/PoR_Interarea_Doors"
+@Overlay119Start equ 0x02308EC0
+@FreeSpace equ 0x02308EC0
 
-.open PROJECT_DIR + "/ftc/overlay9_119", 023C0000h
+.open PROJECT_DIR + "/ftc/overlay9_119", @Overlay119Start
 
-.org 0x023C0000 ; Free space
+.org @FreeSpace
 
 .importobj "../build/linked.o"
 
